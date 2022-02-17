@@ -27,6 +27,10 @@ function PermaProps.PPGetEntTable( ent )
 	content.Material = ent:GetMaterial()
 	content.Solid = ent:GetSolid()
 	content.RenderMode = ent:GetRenderMode()
+
+	// ADD SOUND PROOFING //
+	content.SoundProofing = ent:GetNWInt("soundproofing",0)
+	// ------------------ //
 	
 	if PermaProps.SpecialENTSSave[ent:GetClass()] != nil and isfunction(PermaProps.SpecialENTSSave[ent:GetClass()]) then
 
@@ -110,6 +114,10 @@ function PermaProps.PPEntityFromTable( data, id )
 	ent:SetModelScale( data.ModelScale or 1 )
 	ent:SetMaterial( data.Material or "" )
 	ent:SetSolid( data.Solid or 6 )
+
+	// ADD SOUND PROOFING //
+		ent:SetNWInt("soundproofing",data.SoundProofing or 0)
+	// ------------------ //
 
 	if PermaProps.SpecialENTSSpawn[data.Class] != nil and isfunction(PermaProps.SpecialENTSSpawn[data.Class]) then
 
